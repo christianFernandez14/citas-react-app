@@ -6,11 +6,11 @@ import ListadoPaciente from "./components/ListadoPaciente"
 const App = () => {
 
   return (
-    <>
+    <div className="container mx-auto mt-20">
       <Header />
       <Formulario />
       <ListadoPaciente />
-    </>
+    </div>
   )
 }
 
