@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { generarId } from '../helpers'
 
 import Error from "./Error";
 const Formulario = ({ pacientes, setPacientes }) => {
@@ -27,7 +28,8 @@ const Formulario = ({ pacientes, setPacientes }) => {
       propietario,
       email,
       fecha,
-      sintoma
+      sintoma,
+      id: generarId()
     }
 
     setPacientes([...pacientes, objetoPaciente])
@@ -56,7 +58,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
         className="bg-white shadow-md rounded-lg py-10 px-5 mb-10 mx-5">
 
         {error && <Error><p>Todo los campos son obligatorios</p></Error>}
-        
+
         <div className="mb-5">
           <label
             htmlFor="nombre"

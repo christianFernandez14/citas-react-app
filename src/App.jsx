@@ -13,13 +13,15 @@ const App = () => {
     <div className="container mx-auto mt-20">
 
       <Header />
-      
+
       <div className="md:flex mt-12">
-        <Formulario 
-        pacientes={pacientes}
-        setPacientes={setPacientes}
+        <Formulario
+          pacientes={pacientes}
+          setPacientes={setPacientes}
         />
-        <ListadoPaciente />
+        <ListadoPaciente
+          pacientes={pacientes}
+        />
       </div>
 
     </div>
