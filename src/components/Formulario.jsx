@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Formulario = () => {
+const Formulario = ({ pacientes, setPacientes }) => {
 
   const [nombre, setNombre] = useState('')
   const [propietario, setPropietario] = useState('')
@@ -13,12 +13,30 @@ const Formulario = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if([nombre. propietario, email, fecha, sintoma].includes('')) {
+    if ([nombre.propietario, email, fecha, sintoma].includes('')) {
       setError(true)
 
       return;
     }
+
     setError(false)
+
+    const objetoPaciente = {
+      nombre,
+      propietario,
+      email,
+      fecha,
+      sintoma
+    }
+
+    setPacientes([...pacientes, objetoPaciente])
+    
+    setNombre('')
+    setPropietario('')
+    setEmail('')
+    setFecha('')
+    setSintoma('')
+
   }
 
 
@@ -33,8 +51,8 @@ const Formulario = () => {
       </p>
 
       <form
-      onSubmit={handleSubmit} 
-      className="bg-white shadow-md rounded-lg py-10 px-5 mb-10 mx-5">
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded-lg py-10 px-5 mb-10 mx-5">
 
         {error && (
           <div className="bg-red-600 text-white text-center uppercase p-2 mb-3 rounded-md font-semibold">
