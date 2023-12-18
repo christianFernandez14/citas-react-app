@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { generarId } from '../helpers'
 
 import Error from "./Error";
-const Formulario = ({ pacientes, setPacientes, paciente }) => {
+const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
   const [nombre, setNombre] = useState('')
   const [propietario, setPropietario] = useState('')
@@ -40,10 +40,26 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
       email,
       fecha,
       sintoma,
-      id: generarId()
     }
 
-    setPacientes([...pacientes, objetoPaciente])
+    if(paciente.id) {
+      // Editando Paciente
+      objetoPaciente.id = paciente.id
+      // console.log(objetoPaciente)
+      // console.log(paciente)
+
+      const pacienteActualizados = pacientes.map(pacientesState => pacientesState.id === paciente.id ? objetoPaciente : pacientesState)
+
+      setPacientes(pacienteActualizados)
+      setPaciente({})
+
+    }else{
+      // Nuevo Registro
+      objetoPaciente.id = generarId()
+      setPacientes([...pacientes, objetoPaciente])
+
+    }
+
 
     setNombre('')
     setPropietario('')
