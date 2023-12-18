@@ -1,6 +1,6 @@
 import Paciente from "./Paciente"
 
-const ListadoPaciente = ({ pacientes, setPaciente }) => {
+const ListadoPaciente = ({ pacientes, setPaciente, elminandoPaciente }) => {
 
   return (
     <div className="md:w-1/2 lg:w-3/5 ">
@@ -21,6 +21,7 @@ const ListadoPaciente = ({ pacientes, setPaciente }) => {
                   key={paciente.id}
                   paciente={paciente}
                   setPaciente={setPaciente}
+                  elminandoPaciente={elminandoPaciente}
                 />
               ))}
 

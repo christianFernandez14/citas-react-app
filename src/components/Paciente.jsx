@@ -1,8 +1,18 @@
 
-const Paciente = ({ paciente, setPaciente }) => {
+const Paciente = ({ paciente, setPaciente, elminandoPaciente }) => {
 
-  const { nombre, propietario, email, fecha, sintoma } = paciente
+  const { nombre, propietario, email, fecha, sintoma, id } = paciente
 
+  const handleEliminar = ()=> {
+
+    // Puedes agregar una dependecia que sea mas amigale para la consulta
+    const respuesta = confirm('Deseas eliminar el paciente')
+
+    if (respuesta){
+      elminandoPaciente(id)
+    }
+    
+  }
   return (
 
     <div
@@ -67,6 +77,7 @@ const Paciente = ({ paciente, setPaciente }) => {
         <button
           type="button"
           className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white uppercase font-bold rounded-lg"
+          onClick={handleEliminar}
         >
           eliminar
         </button>
